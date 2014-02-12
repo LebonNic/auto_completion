@@ -35,7 +35,7 @@ Mot & Mot::operator=(const Mot & m)
 
 bool Mot::operator == (const Mot & m)
 {
-	return ((*this) == m);
+	return (this->m_Mot == m.m_Mot);
 }
 
 const std::string & Mot::getMot() const
@@ -50,5 +50,5 @@ void Mot::incrementerOccurences()
 
 bool Mot::operator<(const Mot & m)
 {
-	return ((*this) < m);
+	return (this->m_Mot < m.m_Mot);
 }
