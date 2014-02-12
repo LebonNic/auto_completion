@@ -1,6 +1,8 @@
 #pragma once
 #include <algorithm>
 #include <list>
+#include <fstream>
+#include <sstream>
 
 #include "Mot.h"
 
@@ -13,6 +15,7 @@ public:
     ~AutoCompletionDatabase(void);
 
     void insertMot(Mot &mot);
-	bool save(const std::string & fileName);
+	bool save(const std::string & fileName) const;
+	bool load(const std::string & fileName);
 };
 
