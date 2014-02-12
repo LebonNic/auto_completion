@@ -9,7 +9,7 @@
 
 int compareOccurences(const Mot &a, const Mot &b)
 {
-    return a.
+    return a.getOccurences() < b.getOccurences();
 }
 
 Mot::Mot(const std::string & s)
