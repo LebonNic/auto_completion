@@ -10,13 +10,8 @@
 #include <string>
 
 /**
- *	@brief Classe Mot
- *	
- *	Cette classe définie une structure de donnée et son interface. Elle permet de manipuler
- *	une chaine de caractères associée à un nombre d'occurences dans un texte, fichier, etc...
- *
+ * @brief Permet de manipuler une chaine de caractères associée à un nombre d'occurences dans un texte, fichier, etc...
  */
-
 class Mot
 {
 private:
@@ -39,4 +34,4 @@ public:
 	~Mot(void);
 };
 
-int compareOccurences(const Mot &a, const Mot &b);
+bool compareOccurences(const Mot &a, const Mot &b);

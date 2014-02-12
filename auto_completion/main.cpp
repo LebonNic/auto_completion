@@ -1,4 +1,9 @@
-#include <iostream>
+/**
+ * @file main.cpp
+ * @brief Point d'entrée du programme
+ * @author Antoine Colmard
+ * @author Nicolas Prugne
+ */
 
 #include "AutoCompletionDatabase.h"
 #include "Mot.h"

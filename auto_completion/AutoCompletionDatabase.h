@@ -1,3 +1,10 @@
+/**
+ * @file AutoCompletionDatabase.h
+ * @brief Déclaration de la classe AutoCompletionDatabase
+ * @author Antoine Colmard
+ * @author Nicolas Prugne
+ */
+
 #pragma once
 #include <algorithm>
 #include <list>
@@ -7,6 +14,9 @@
 
 #include "Mot.h"
 
+/**
+ * @brief Classe de stockage des mots pour l'autocomplétion
+ */
 class AutoCompletionDatabase
 {
 private:
