@@ -2,8 +2,13 @@
 
 AutoCompletionDatabase::AutoCompletionDatabase(void)
 {
+
 }
 
+AutoCompletionDatabase::AutoCompletionDatabase(const std::string & fileName)
+{
+	load(fileName);
+}
 
 AutoCompletionDatabase::~AutoCompletionDatabase(void)
 {
@@ -44,23 +49,30 @@ bool AutoCompletionDatabase::save(const std::string & fileName) const
 
 bool AutoCompletionDatabase::load(const std::string & fileName)
 {
-	bool parsingSucces = true;
+	bool parsingSuccess = true;
 
 	std::ifstream file = std::ifstream(fileName);
 	std::string line,
 				word;
+	unsigned int occurences;
 	
 	if(file.is_open())
 	{
-		while(std::getline(file, line))
-{
+		while(parsingSuccess && std::getline(file, line))
+		{
 			std::stringstream ss(line);
+
+			if(!(ss >> word >> occurences))
+				parsingSuccess = false;
+
+			else
+				m_Database.push_back(Mot(word, occurences));
 		}
 	}
 	else
-		parsingSucces = false;
+		parsingSuccess = false;
 
-    return parsingSucces;
+    return parsingSuccess;
 }
 
 std::list<Mot> AutoCompletionDatabase::autoCompletion(const std::string &partial)
