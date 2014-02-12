@@ -13,6 +13,9 @@ int main(int argc, char**argv)
     database.insertMot(chatte);
     database.insertMot(chien);
     database.insertMot(chat);
+    database.insertMot(chatte);
+
+    std::list<Mot> autoCompletion = database.autoCompletion("ieo");
 
     return 0;
 }

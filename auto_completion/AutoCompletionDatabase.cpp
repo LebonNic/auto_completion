@@ -82,13 +82,14 @@ std::list<Mot> AutoCompletionDatabase::autoCompletion(const std::string &partial
     std::list<Mot>::iterator last = first;
     unsigned int length = partial.length();
 	
-    while(last != this->m_Database.end() && last->getMot().substr(length) == partial)
+    while(last != this->m_Database.end() && last->getMot().substr(0,length) == partial)
         ++last;
 
     for(std::list<Mot>::iterator it = first; it != last; ++it)
     {
-        std::list<Mot>::iterator insertIterator = std::lower_bound(this->m_Database.begin(), this->m_Database.end(), *it, compareOccurences);
-        if(insertIterator != this->m_Database.end())
-            autoCompletionList.insert(insertIterator, *it);
+        std::list<Mot>::iterator insertIterator = std::lower_bound(autoCompletionList.begin(), autoCompletionList.end(), *it, compareOccurences);
+        autoCompletionList.insert(insertIterator, *it);
     }
+
+    return autoCompletionList;
 }
