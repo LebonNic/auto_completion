@@ -25,6 +25,7 @@ private:
 
 public:
 	Mot(const std::string & s);
+	Mot(const std::string & s, unsigned int occurences);
 	Mot(const Mot & m);
 	Mot & operator=(const Mot & m);
 

@@ -13,6 +13,12 @@ Mot::Mot(const std::string & s)
 	m_uOccurences = 0;
 }
 
+Mot::Mot(const std::string & s, unsigned int occurences)
+{
+	m_Mot = s;
+	m_uOccurences = occurences;
+}
+
 Mot::~Mot(void)
 {
 }
