@@ -3,6 +3,7 @@
 #include <list>
 #include <fstream>
 #include <sstream>
+#include <iostream>
 
 #include "Mot.h"
 
@@ -12,6 +13,7 @@ private:
     std::list<Mot> m_Database;
 
 	bool load(const std::string & fileName);
+    std::list<Mot> autoCompletion(const std::string &partial);
 public:
 	AutoCompletionDatabase(void);
 	AutoCompletionDatabase(const std::string & fileName);
@@ -20,6 +22,6 @@ public:
     void insertMot(Mot &mot);
 	bool save(const std::string & fileName) const;
 	
-    std::list<Mot> autoCompletion(const std::string &partial);
+    void affichageMotCompleted(const std::string &partial);
 };
 
