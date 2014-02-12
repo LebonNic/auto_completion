@@ -21,6 +21,7 @@ AutoCompletionDatabase::AutoCompletionDatabase(void)
  */
 AutoCompletionDatabase::AutoCompletionDatabase(const std::string & fileName)
 {
+	m_fileName = fileName;
 	load(fileName);
 }
 #pragma endregion
@@ -147,4 +148,14 @@ void AutoCompletionDatabase::affichageMotCompleted(const std::string &partial)
 	for (std::list<Mot>::reverse_iterator it = autoCompletedList.rbegin(); it != autoCompletedList.rend(); ++it)
         std::cout << it->getMot() << std::endl;
 }
-#pragma endregion
+
+void AutoCompletionDatabase::saveInFile() const
+{
+	save(m_fileName); //TODO tester si la base a été initilisée à partir d'un fichier, auquel cas la données membre m_fileName sera bien initilisée
+						// mais pas dans le cas contraire
+}
+
+void AutoCompletionDatabase::saveInFile(const std::string & fileName) const
+{
+	save(fileName);
+}
