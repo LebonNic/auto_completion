@@ -13,6 +13,6 @@ public:
     ~AutoCompletionDatabase(void);
 
     void insertMot(Mot &mot);
-	void save(const std::string & fileName);
+	bool save(const std::string & fileName);
 };
 

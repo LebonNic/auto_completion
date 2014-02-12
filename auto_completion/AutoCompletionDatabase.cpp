@@ -25,6 +25,7 @@ void AutoCompletionDatabase::insertMot(Mot &mot)
     }
 }
 
-void AutoCompletionDatabase::save(const std::string & fileName)
+bool AutoCompletionDatabase::save(const std::string & fileName)
 {
+	
 }
