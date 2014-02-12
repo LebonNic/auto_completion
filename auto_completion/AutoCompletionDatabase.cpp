@@ -79,11 +79,13 @@ bool AutoCompletionDatabase::load(const std::string & fileName)
 		{
 			std::stringstream ss(line);
 
-			if(!(ss >> word >> occurences))
-				parsingSuccess = false;
-
-			else
-				m_Database.push_back(Mot(word, occurences));
+			if(line != std::string(""))
+			{
+				if(!(ss >> word >> occurences))
+					parsingSuccess = false;
+				else
+					m_Database.push_back(Mot(word, occurences));
+			}
 		}
 	}
 	else
