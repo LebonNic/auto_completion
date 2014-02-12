@@ -1,35 +1,46 @@
+/**
+ * @file AutoCompletionDatabase.cpp
+ * @brief Implémentation de la classe AutoCompletionDatabase
+ * @author Antoine Colmard
+ * @author Nicolas Prugne
+ */
 #include "AutoCompletionDatabase.h"
 
+#pragma region "Constructeurs"
+/**
+ * @brief AutoCompletionDatabase::AutoCompletionDatabase Constructeur par défaut de database
+ */
 AutoCompletionDatabase::AutoCompletionDatabase(void)
 {
 
 }
 
+/**
+ * @brief AutoCompletionDatabase::AutoCompletionDatabase Constructeur de database par chargement de fichier
+ * @param fileName Nom du fichier à charger
+ */
 AutoCompletionDatabase::AutoCompletionDatabase(const std::string & fileName)
 {
 	load(fileName);
 }
+#pragma endregion
 
+#pragma region "Destructeur"
+/**
+ * @brief AutoCompletionDatabase::~AutoCompletionDatabase Destructeur de database
+ */
 AutoCompletionDatabase::~AutoCompletionDatabase(void)
 {
 
 }
+#pragma endregion
 
-void AutoCompletionDatabase::insertMot(Mot &mot)
-{
-    std::list<Mot>::iterator insertIterator = std::lower_bound(this->m_Database.begin(), this->m_Database.end(), mot);
-    // La liste n'est pas vide ou mot recherché existe déjà dans la database, on incrémente la valeur associée
-    if (insertIterator != this->m_Database.end() && (*insertIterator) == mot)
-    {
-        insertIterator->incrementerOccurences();
-    }
-    // Le mot n'existe pas dans la database, insertion
-    else
-    {
-        this->m_Database.insert(insertIterator, mot);
-    }
-}
-
+#pragma region "Serialisation"
+/**
+ * @brief AutoCompletionDatabase::save Sauvegarde de la database
+ * @param fileName Emplacement de la sauvegarde
+ * @return True si la sauvegarde a été réalisée avec succès, false sinon
+ */
 bool AutoCompletionDatabase::save(const std::string & fileName) const
 {
 	bool savingSuccess = true;
@@ -47,6 +58,11 @@ bool AutoCompletionDatabase::save(const std::string & fileName) const
 	return savingSuccess;
 }
 
+/**
+ * @brief AutoCompletionDatabase::load Charge la database depuis un fichier
+ * @param fileName Fichier à charger
+ * @return True le chargement a été réalisé avec succès, false sinon
+ */
 bool AutoCompletionDatabase::load(const std::string & fileName)
 {
 	bool parsingSuccess = true;
@@ -74,7 +90,33 @@ bool AutoCompletionDatabase::load(const std::string & fileName)
 
     return parsingSuccess;
 }
+#pragma endregion
 
+#pragma region "Méthodes"
+/**
+ * @brief AutoCompletionDatabase::insertMot Insert un mot dans la database, incrémente ses occurences s'il existe déjà
+ * @param mot Mot à insérer
+ */
+void AutoCompletionDatabase::insertMot(Mot &mot)
+{
+    std::list<Mot>::iterator insertIterator = std::lower_bound(this->m_Database.begin(), this->m_Database.end(), mot);
+    // La liste n'est pas vide ou mot recherché existe déjà dans la database, on incrémente la valeur associée
+    if (insertIterator != this->m_Database.end() && (*insertIterator) == mot)
+    {
+        insertIterator->incrementerOccurences();
+    }
+    // Le mot n'existe pas dans la database, insertion
+    else
+    {
+        this->m_Database.insert(insertIterator, mot);
+    }
+}
+
+/**
+ * @brief AutoCompletionDatabase::autoCompletion Récupère la liste des complétion de la chaîne partielle triés sur leur nombre d'occurences
+ * @param partial Chaîne partielle à compléter
+ * @return Liste des complétions triées par occurences
+ */
 std::list<Mot> AutoCompletionDatabase::autoCompletion(const std::string &partial)
 {
     std::list<Mot> autoCompletionList;
@@ -94,6 +136,10 @@ std::list<Mot> AutoCompletionDatabase::autoCompletion(const std::string &partial
     return autoCompletionList;
 }
 
+/**
+ * @brief AutoCompletionDatabase::affichageMotCompleted Affiche les complétions de la chaîne partielle passée
+ * @param partial Chaîne partielle à compléter
+ */
 void AutoCompletionDatabase::affichageMotCompleted(const std::string &partial)
 {
     std::list<Mot> autoCompletedList = this->autoCompletion(partial);
@@ -101,3 +147,4 @@ void AutoCompletionDatabase::affichageMotCompleted(const std::string &partial)
 	for (std::list<Mot>::reverse_iterator it = autoCompletedList.rbegin(); it != autoCompletedList.rend(); ++it)
         std::cout << it->getMot() << std::endl;
 }
+#pragma endregion
