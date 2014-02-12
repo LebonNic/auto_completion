@@ -12,9 +12,9 @@
 /**
  *	@brief Classe Mot
  *	
- *	This class manages different sets of data in order to propose an interface to manipulate a square grid graph.
- *	The class stores a matrix of nodes and a list of edges. It has a width and an height. And finally,
- *	it uses a PathFinder object to calculate the shortest path between two nodes. 
+ *	Cette classe définie une structure de donnée et son interface. Elle permet de manipuler
+ *	une chaine de caractères associée à un nombre d'occurences dans un texte, fichier, etc...
+ *
  */
 
 class Mot
