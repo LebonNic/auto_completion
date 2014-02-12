@@ -13,8 +13,8 @@ AutoCompletionDatabase::~AutoCompletionDatabase(void)
 void AutoCompletionDatabase::insertMot(Mot &mot)
 {
     auto insertIterator = std::lower_bound(this->m_Database.begin(), this->m_Database.end(), mot);
-    // Le mot recherché existe déjà dans la database, on incrémente la valeur associée
-    if ((*insertIterator) == mot)
+    // La liste n'est pas vide ou mot recherché existe déjà dans la database, on incrémente la valeur associée
+    if (insertIterator != this->m_Database.end() && (*insertIterator) == mot)
     {
         insertIterator->incrementerOccurences();
     }
