@@ -32,7 +32,7 @@ AutoCompletionDatabase::AutoCompletionDatabase(const std::string & fileName)
  */
 AutoCompletionDatabase::~AutoCompletionDatabase(void)
 {
-
+    this->saveInFile();
 }
 #pragma endregion
 
@@ -51,7 +51,7 @@ bool AutoCompletionDatabase::save(const std::string & fileName) const
 	if(file.is_open())
 	{
 		for(auto mot = m_Database.begin(); mot != m_Database.end(); ++mot)
-			file << (*mot).getMot() << (*mot).getOccurences() << std::endl;
+			file << mot->getMot() << " " << mot->getOccurences() << std::endl;
 	}
 	else
 		savingSuccess = false;
@@ -123,7 +123,7 @@ std::list<Mot> AutoCompletionDatabase::autoCompletion(const std::string &partial
     std::list<Mot> autoCompletionList;
     std::list<Mot>::iterator first = std::lower_bound(this->m_Database.begin(), this->m_Database.end(), Mot(partial));
     std::list<Mot>::iterator last = first;
-    unsigned int length = partial.length();
+    unsigned int length = (unsigned int) partial.length();
 	
     while(last != this->m_Database.end() && last->getMot().substr(0,length) == partial)
         ++last;

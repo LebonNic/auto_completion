@@ -28,7 +28,6 @@ int main(int argc, char **argv)
 	database.affichageMotCompleted("verbal");
 
     // Fermeture base de données
-    system("PAUSE");
     std::cout << "Dechargement de la base de donnees ..." << std::endl;
 	return EXIT_SUCCESS;
 }
