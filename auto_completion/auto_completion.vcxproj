@@ -11,9 +11,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AutoCompletionDatabase.h" />
     <ClInclude Include="Mot.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AutoCompletionDatabase.cpp" />
     <ClCompile Include="Mot.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
