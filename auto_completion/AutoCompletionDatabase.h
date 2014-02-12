@@ -11,8 +11,11 @@ class AutoCompletionDatabase
 {
 private:
     std::list<Mot> m_Database;
+	std::string m_fileName;
 
 	bool load(const std::string & fileName);
+	bool save(const std::string & fileName) const;
+
     std::list<Mot> autoCompletion(const std::string &partial);
 public:
 	AutoCompletionDatabase(void);
@@ -20,7 +23,8 @@ public:
     ~AutoCompletionDatabase(void);
 
     void insertMot(Mot &mot);
-	bool save(const std::string & fileName) const;
+	void saveInFile() const;
+	void saveInFile(const std::string & fileName) const;
 	
     void affichageMotCompleted(const std::string &partial);
 };
