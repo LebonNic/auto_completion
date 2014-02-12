@@ -1,5 +1,11 @@
-#include "Mot.h"
+/**
+ * @file Mot.cpp
+ * @brief Définition de la classe Mot
+ * @author Antoine Colmard
+ * @author Nicolas Prugne
+ */
 
+#include "Mot.h"
 
 Mot::Mot(const std::string & s)
 {
@@ -25,6 +31,11 @@ Mot & Mot::operator=(const Mot & m)
 		this->m_uOccurences = m.m_uOccurences;
 	}
 	return (*this);
+}
+
+bool Mot::operator == (const Mot & m)
+{
+	return ((*this) == m);
 }
 
 const std::string & Mot::getMot() const
