@@ -24,3 +24,7 @@ void AutoCompletionDatabase::insertMot(Mot &mot)
         this->m_Database.insert(insertIterator, mot);
     }
 }
+
+void AutoCompletionDatabase::save(const std::string & fileName)
+{
+}
