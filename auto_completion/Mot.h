@@ -38,3 +38,4 @@ public:
 	~Mot(void);
 };
 
+int compareOccurences(const Mot &a, const Mot &b);

@@ -14,5 +14,6 @@ public:
 
     void insertMot(Mot &mot);
 	bool save(const std::string & fileName);
+    std::list<Mot> autoCompletion(const std::string &partial);
 };
 

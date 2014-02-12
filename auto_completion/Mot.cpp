@@ -7,6 +7,11 @@
 
 #include "Mot.h"
 
+int compareOccurences(const Mot &a, const Mot &b)
+{
+    return a.
+}
+
 Mot::Mot(const std::string & s)
 {
 	m_Mot = s;
