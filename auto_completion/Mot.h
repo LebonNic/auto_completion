@@ -33,6 +33,7 @@ public:
 	bool operator<(const Mot & m);
 
 	const std::string & getMot() const;
+	unsigned int getOccurences() const;
 	void incrementerOccurences();
 
 	~Mot(void);

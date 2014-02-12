@@ -54,6 +54,11 @@ const std::string & Mot::getMot() const
 	return m_Mot;
 }
 
+unsigned int Mot::getOccurences() const
+{
+	return m_uOccurences;
+}
+
 void Mot::incrementerOccurences()
 {
 	++m_uOccurences;
