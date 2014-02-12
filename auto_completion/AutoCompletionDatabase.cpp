@@ -59,7 +59,8 @@ bool AutoCompletionDatabase::load(const std::string & fileName)
 	}
 	else
 		parsingSucces = false;
-	
+
+    return parsingSucces;
 }
 
 std::list<Mot> AutoCompletionDatabase::autoCompletion(const std::string &partial)
@@ -69,7 +70,6 @@ std::list<Mot> AutoCompletionDatabase::autoCompletion(const std::string &partial
     std::list<Mot>::iterator last = first;
     unsigned int length = partial.length();
 	
-	return parsingSucces;
     while(last != this->m_Database.end() && last->getMot().substr(length) == partial)
         ++last;
 
