@@ -98,6 +98,6 @@ void AutoCompletionDatabase::affichageMotCompleted(const std::string &partial)
 {
     std::list<Mot> autoCompletedList = this->autoCompletion(partial);
 
-    for (std::list<Mot>::iterator it = autoCompletedList.begin(); it != autoCompletedList.end(); ++it)
+	for (std::list<Mot>::reverse_iterator it = autoCompletedList.rbegin(); it != autoCompletedList.rend(); ++it)
         std::cout << it->getMot() << std::endl;
 }
