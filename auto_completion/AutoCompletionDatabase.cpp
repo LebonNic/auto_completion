@@ -12,7 +12,7 @@
  */
 AutoCompletionDatabase::AutoCompletionDatabase(void)
 {
-
+    m_fileName = "";
 }
 
 /**
@@ -149,13 +149,23 @@ void AutoCompletionDatabase::affichageMotCompleted(const std::string &partial)
         std::cout << it->getMot() << std::endl;
 }
 
+/**
+ * @brief AutoCompletionDatabase::saveInFile Met à jour le fichier de database chargé
+ */
 void AutoCompletionDatabase::saveInFile() const
 {
-	save(m_fileName); //TODO tester si la base a été initilisée à partir d'un fichier, auquel cas la données membre m_fileName sera bien initilisée
-						// mais pas dans le cas contraire
+    if (m_fileName != "")
+    {
+	    save(m_fileName);
+    }
 }
 
+/**
+ * @brief AutoCompletionDatabase::saveInFile Sauvegarde le fichier à l'emplacement spécifié
+ * @param fileName Emplacement du fichier
+ */
 void AutoCompletionDatabase::saveInFile(const std::string & fileName) const
 {
 	save(fileName);
 }
+#pragma endregion
