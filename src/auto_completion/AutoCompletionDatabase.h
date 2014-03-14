@@ -29,7 +29,9 @@ private:
     std::list<Mot> autoCompletion(const std::string &partial);
 public:
 	AutoCompletionDatabase(void);
-	AutoCompletionDatabase(const std::string & fileName);
+	AutoCompletionDatabase(const AutoCompletionDatabase & database);
+	AutoCompletionDatabase(const std::string & fileName, bool sortLoadedList = true);
+	AutoCompletionDatabase & operator=(const AutoCompletionDatabase & database);
     ~AutoCompletionDatabase(void);
 
     void insertMot(Mot &mot);

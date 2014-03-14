@@ -16,13 +16,27 @@ AutoCompletionDatabase::AutoCompletionDatabase(void)
 }
 
 /**
+ * @brief AutoCompletionDatabase::AutoCompletionDatabase Constructeur par recopie
+ * @param database Objet de type AutoCompletionDatabase copié au moment de l'instanciation
+ */
+AutoCompletionDatabase::AutoCompletionDatabase(const AutoCompletionDatabase & database)
+{
+	this->m_Database = database.m_Database;
+	this->m_fileName = database.m_fileName;
+}
+
+/**
  * @brief AutoCompletionDatabase::AutoCompletionDatabase Constructeur de database par chargement de fichier
  * @param fileName Nom du fichier à charger
+ * @param sortLoadedList Booléen permettant de spécifier si un tri doit être effectuée sur la liste chargée.
+ *						 Permet de gagner du temps si le fichier lu est déjà trié.
  */
-AutoCompletionDatabase::AutoCompletionDatabase(const std::string & fileName)
+AutoCompletionDatabase::AutoCompletionDatabase(const std::string & fileName, bool sortLoadedList)
 {
 	m_fileName = fileName;
 	load(fileName);
+	if(sortLoadedList)
+		m_Database.sort();
 }
 #pragma endregion
 
@@ -33,6 +47,23 @@ AutoCompletionDatabase::AutoCompletionDatabase(const std::string & fileName)
 AutoCompletionDatabase::~AutoCompletionDatabase(void)
 {
     this->saveInFile();
+}
+#pragma endregion
+
+#pragma region "Operateurs"
+/**
+ * @brief AutoCompletionDatabase::operator= Opérateur d'affectation de la classe
+ * @param database Objet de type AutoCompletionDatabase utilisé au moment de l'affectation
+ */
+AutoCompletionDatabase & AutoCompletionDatabase::operator=(const AutoCompletionDatabase & database)
+{
+	if(this != &database)
+	{
+		this->m_Database = database.m_Database;
+		this->m_fileName = database.m_fileName;
+	}
+
+	return *this;
 }
 #pragma endregion
 
