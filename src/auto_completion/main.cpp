@@ -25,7 +25,11 @@ int main(int argc, char **argv)
     }
 
     // Recherche motif
+	start = std::clock();
+	std::cout << "Recherche de mots commencant par \"verbal\" ..." << std::endl; 
 	database.affichageMotCompleted("verbal");
+	duration = (std::clock() - start) / (double) CLOCKS_PER_SEC;
+	std::cout << "Recherche terminee (" << duration << "s)." << std::endl;
 
     // Fermeture base de données
     std::cout << "Dechargement de la base de donnees ..." << std::endl;
