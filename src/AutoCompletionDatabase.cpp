@@ -6,7 +6,6 @@
  */
 #include "AutoCompletionDatabase.h"
 
-#pragma region "Constructeurs"
 /**
  * @brief AutoCompletionDatabase::AutoCompletionDatabase Constructeur par défaut de database
  */
@@ -38,9 +37,7 @@ AutoCompletionDatabase::AutoCompletionDatabase(const std::string & fileName, boo
 	if(sortLoadedList)
 		m_Database.sort();
 }
-#pragma endregion
 
-#pragma region "Destructeur"
 /**
  * @brief AutoCompletionDatabase::~AutoCompletionDatabase Destructeur de database
  */
@@ -48,9 +45,7 @@ AutoCompletionDatabase::~AutoCompletionDatabase(void)
 {
     this->saveInFile();
 }
-#pragma endregion
 
-#pragma region "Operateurs"
 /**
  * @brief AutoCompletionDatabase::operator= Opérateur d'affectation de la classe
  * @param database Objet de type AutoCompletionDatabase utilisé au moment de l'affectation
@@ -65,9 +60,7 @@ AutoCompletionDatabase & AutoCompletionDatabase::operator=(const AutoCompletionD
 
 	return *this;
 }
-#pragma endregion
 
-#pragma region "Serialisation"
 /**
  * @brief AutoCompletionDatabase::save Sauvegarde de la database
  * @param fileName Emplacement de la sauvegarde
@@ -77,11 +70,11 @@ bool AutoCompletionDatabase::save(const std::string & fileName) const
 {
 	bool savingSuccess = true;
 
-	std::ofstream file = std::ofstream(fileName);
+    std::ofstream file(fileName.c_str());
 
 	if(file.is_open())
 	{
-		for(auto mot = m_Database.begin(); mot != m_Database.end(); ++mot)
+        for(std::list<Mot>::const_iterator mot = m_Database.begin(); mot != m_Database.end(); ++mot)
 			file << mot->getMot() << " " << mot->getOccurences() << std::endl;
 	}
 	else
@@ -99,7 +92,7 @@ bool AutoCompletionDatabase::load(const std::string & fileName)
 {
 	bool parsingSuccess = true;
 
-	std::ifstream file = std::ifstream(fileName);
+    std::ifstream file(fileName.c_str());
 	std::string line,
 				word;
 	unsigned int occurences;
@@ -124,9 +117,7 @@ bool AutoCompletionDatabase::load(const std::string & fileName)
 
     return parsingSuccess;
 }
-#pragma endregion
 
-#pragma region "Méthodes"
 /**
  * @brief AutoCompletionDatabase::insertMot Insert un mot dans la database, incrémente ses occurences s'il existe déjà
  * @param mot Mot à insérer
@@ -201,4 +192,3 @@ void AutoCompletionDatabase::saveInFile(const std::string & fileName) const
 {
 	save(fileName);
 }
-#pragma endregion

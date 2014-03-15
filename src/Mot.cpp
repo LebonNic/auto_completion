@@ -7,7 +7,6 @@
 
 #include "Mot.h"
 
-#pragma region "Comparateurs"
 /**
  * @brief compareOccurences Compare le nombre d'occurences entre deux mots
  * @param a Mot a
@@ -39,9 +38,6 @@ bool Mot::operator == (const Mot & m)
 	return (this->m_Mot == m.m_Mot);
 }
 
-#pragma endregion
-
-#pragma region "Constructeurs"
 /**
  * @brief Mot::Mot Constructeur de mot
  * @param s Valeur de la chaîne associée
@@ -87,18 +83,14 @@ Mot & Mot::operator=(const Mot & m)
 	}
 	return (*this);
 }
-#pragma endregion
 
-#pragma region "Destructeur"
 /**
  * @brief Mot::~Mot Destructeur de mot
  */
 Mot::~Mot(void)
 {
 }
-#pragma endregion
 
-#pragma region "Getters"
 /**
  * @brief Mot::getMot Obtient la chaîne de caractère liée
  * @return Chaîne de caractère liée
@@ -116,9 +108,7 @@ unsigned int Mot::getOccurences() const
 {
 	return m_uOccurences;
 }
-#pragma endregion
 
-#pragma region "Méthodes"
 /**
  * @brief Mot::incrementerOccurences Incrémente le nombre d'ocurrences du mot
  */
@@ -126,4 +116,3 @@ void Mot::incrementerOccurences()
 {
 	++m_uOccurences;
 }
-#pragma endregion
